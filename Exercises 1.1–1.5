@@ -1,0 +1,65 @@
+const Header=(props)=>{
+  return(
+    <h1>{props.course}</h1>
+  )
+}
+
+const Content=(props)=>{
+  //Taking the array and breaking it down name for name and exercise for 2
+  const name1=props.parts[0].name
+  const exercises_for_one=props.parts[0].exercises
+  const name2=props.parts[1].name
+  const exercises_for_two=props.parts[1].exercises
+  const name3=props.parts[2].name
+  const exercises_for_three=props.parts[2].exercises
+  return(
+    <div>
+      {/* Putting the taking variables and displaying it into the component */}
+      <Part part={name1} exercise={exercises_for_one}></Part>
+      <Part part={name2} exercise={exercises_for_two}></Part>
+      <Part part={name3} exercise={exercises_for_three}></Part>
+    </div>
+  )
+}
+const Part=(props)=>{
+  return(
+    <p>{props.part} {props.exercise}</p>
+  )
+}
+const Total=(props)=>{
+  //Calculating the total to output into the component
+  const total=(props.parts[0].exercises+props.parts[1].exercises+props.parts[2].exercises)
+  return(
+    <p>Number of exercises {total}</p>
+  )
+}
+const App = () => {
+  const course = {
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      }
+    ]
+  }
+  //const total=part3.exercises + part2.exercises + part3.exercises
+
+  return (
+    <div>
+      <Header course={course.name}></Header>
+      <Content parts={course.parts}></Content>
+      <Total parts={course.parts}></Total>
+    </div>
+  )
+}
+
+export default App
